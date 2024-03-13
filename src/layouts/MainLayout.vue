@@ -11,7 +11,7 @@
           @click="toggleLeftDrawer"
         />
 
-        <q-toolbar-title> Gerenciador do TPE - Serra/ES </q-toolbar-title>
+        <q-toolbar-title>Gerenciador do TPE</q-toolbar-title>
 
         <div>Quasar v{{ $q.version }}</div>
       </q-toolbar>
@@ -19,11 +19,47 @@
 
     <q-drawer v-model="leftDrawerOpen" show-if-above bordered>
       <q-list>
-        <EssentialLink
-          v-for="link in essentialLinks"
-          :key="link.title"
-          v-bind="link"
-        />
+        <q-item clickable exact v-ripple>
+          <q-item-section avatar>
+            <q-icon name="fa-regular fa-building" />
+          </q-item-section>
+          <q-item-section>Cidades</q-item-section>
+        </q-item>
+
+        <q-item clickable exact v-ripple>
+          <q-item-section avatar>
+            <q-icon name="fa-regular fa-map" />
+          </q-item-section>
+          <q-item-section>Pontos de Trabalho</q-item-section>
+        </q-item>
+
+        <q-item clickable exact v-ripple>
+          <q-item-section avatar>
+            <q-icon name="fa-solid fa-hand-holding-hand" />
+          </q-item-section>
+          <q-item-section>Pontos de Apoio</q-item-section>
+        </q-item>
+
+        <q-item clickable exact v-ripple>
+          <q-item-section avatar>
+            <q-icon name="fa-solid fa-person-walking-luggage" />
+          </q-item-section>
+          <q-item-section>Publicadores</q-item-section>
+        </q-item>
+
+        <q-item clickable exact v-ripple to="/">
+          <q-item-section avatar>
+            <q-icon name="fa-solid fa-calendar-days" />
+          </q-item-section>
+          <q-item-section>Escalas</q-item-section>
+        </q-item>
+
+        <q-item clickable exact v-ripple :to="{ name: 'user-list' }">
+          <q-item-section avatar>
+            <q-icon name="fa-regular fa-user" />
+          </q-item-section>
+          <q-item-section>Usuários</q-item-section>
+        </q-item>
       </q-list>
     </q-drawer>
 
@@ -35,47 +71,16 @@
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
-import EssentialLink from 'components/EssentialLink.vue';
-
-const linksList = [
-  {
-    title: 'Cidades/Regiões Metropolitana',
-    icon: 'school',
-  },
-  {
-    title: 'Pontos de Trabalho',
-    icon: 'code',
-  },
-  {
-    title: 'Pontos de Apoio',
-    icon: 'chat',
-  },
-  {
-    title: 'Publicadores',
-    icon: 'record_voice_over',
-  },
-  {
-    title: 'Escalas',
-    icon: 'rss_feed',
-  },
-  {
-    title: 'Usuários do Sistema',
-    icon: 'rss_feed',
-  },
-];
 
 export default defineComponent({
   name: 'MainLayout',
 
-  components: {
-    EssentialLink,
-  },
+  components: {},
 
   setup() {
     const leftDrawerOpen = ref(false);
 
     return {
-      essentialLinks: linksList,
       leftDrawerOpen,
       toggleLeftDrawer() {
         leftDrawerOpen.value = !leftDrawerOpen.value;

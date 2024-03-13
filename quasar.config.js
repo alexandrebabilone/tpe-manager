@@ -9,6 +9,7 @@
 // https://v2.quasar.dev/quasar-cli-vite/quasar-config-js
 
 const { configure } = require('quasar/wrappers');
+const { withCtx } = require('vue');
 
 module.exports = configure(function (/* ctx */) {
   return {
@@ -36,7 +37,7 @@ module.exports = configure(function (/* ctx */) {
     extras: [
       // 'ionicons-v4',
       // 'mdi-v7',
-      // 'fontawesome-v6',
+      'fontawesome-v6',
       // 'eva-icons',
       // 'themify',
       // 'line-awesome',
@@ -54,6 +55,12 @@ module.exports = configure(function (/* ctx */) {
       },
 
       vueRouterMode: 'history', // available values: 'hash', 'history'
+      env: {
+        API_URL:
+          process.env.NODE_ENV === 'development'
+            ? 'http://127.0.0.1:3000/'
+            : 'http://127.0.0.1:3000/',
+      },
       // vueRouterBase,
       // vueDevtools,
       // vueOptionsAPI: false,

@@ -30,3 +30,7 @@ export interface Publisher {
   phone: string;
   availability: Availability;
 }
+
+export interface ApiResponse {
+  data: any;
+}
