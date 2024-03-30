@@ -8,13 +8,24 @@ const routes: RouteRecordRaw[] = [
       { path: '', component: () => import('pages/IndexPage.vue') },
       {
         path: 'user',
-        name: 'user',
+        name: 'user-post',
+        component: () => import('pages/user/UserForm.vue'),
+      },
+      {
+        path: 'user/:id',
+        name: 'user-get',
         component: () => import('pages/user/UserForm.vue'),
       },
       {
         path: 'users',
         name: 'user-list',
         component: () => import('pages/user/UserList.vue'),
+      },
+      // CITY
+      {
+        path: 'cities',
+        name: 'city-list',
+        component: () => import('pages/user/CityList.vue'),
       },
     ],
   },

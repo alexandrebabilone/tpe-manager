@@ -24,13 +24,29 @@ export interface Availability {
   Sunday: WeekDay;
 }
 
+export interface ApiResponse {
+  data: any;
+}
+
+export interface Congregation {
+  id: number;
+  name: string;
+  active: boolean;
+}
+
 export interface Publisher {
   id: number;
   name: string;
   phone: string;
   availability: Availability;
+  congregation: Congregation;
+  active: boolean;
 }
 
-export interface ApiResponse {
-  data: any;
+export interface User {
+  id: number;
+  name: string;
+  phone: string;
+  email: string;
+  active: boolean;
 }

@@ -1,13 +1,19 @@
-import useApi from 'src/composables/UseApi';
+import useApiCRUD from 'src/composables/UseApiCRUD';
 
 export default function congregationService() {
-  const { list, post, update, remove, getById } = useApi('congregation');
+  const {
+    list: listCongregation,
+    post: postCongregation,
+    update: updateCongregation,
+    remove: removeCongregation,
+    getById: getCongregationById,
+  } = useApiCRUD('congregation');
 
   return {
-    list,
-    post,
-    update,
-    remove,
-    getById,
+    listCongregation,
+    postCongregation,
+    updateCongregation,
+    removeCongregation,
+    getCongregationById,
   };
 }

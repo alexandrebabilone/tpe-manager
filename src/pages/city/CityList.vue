@@ -55,9 +55,8 @@
 <script lang="ts">
 import { useQuasar } from 'quasar';
 import { onMounted, ref } from 'vue';
-import userService from 'src/services/user';
+import cityService from 'src/services/city';
 import { useRouter } from 'vue-router';
-import { handleSuccess } from 'src/handle/handleSuccess.ts';
 
 const columns = [
   {
@@ -82,16 +81,16 @@ export default {
   setup() {
     const $q = useQuasar();
     const router = useRouter();
-    const usuarios = ref([]);
-    const { listUser, removeUser } = userService();
+    const cities = ref([]);
+    const { listCity } = cityService();
 
     onMounted(() => {
-      getUsuarios();
+      getCities();
     });
 
-    const getUsuarios = async () => {
-      usuarios.value = await listUser();
-      console.log(usuarios.value);
+    const getCities = async () => {
+      cities.value = await listCity();
+      console.log(cities.value);
     };
 
     const visualizar = (id) => {
@@ -107,8 +106,7 @@ export default {
       })
         .onOk(() => {
           console.log('OK');
-          removeUser(id);
-          handleSuccess('Usuário removido com sucesso!');
+          remove(id);
         })
         .onCancel(() => {
           console.log('Cancel');
@@ -116,7 +114,7 @@ export default {
     };
 
     return {
-      usuarios,
+      usuarios: cities,
       columns,
       visualizar,
       excluir,
@@ -124,4 +122,4 @@ export default {
   },
 };
 </script>
-src/services/user
+src/services/city
