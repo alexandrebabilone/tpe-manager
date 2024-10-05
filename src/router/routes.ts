@@ -25,7 +25,7 @@ const routes: RouteRecordRaw[] = [
       {
         path: 'cities',
         name: 'city-list',
-        component: () => import('pages/user/CityList.vue'),
+        component: () => import('pages/city/CityList.vue'),
       },
     ],
   },
